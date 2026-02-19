@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lyger Animal Sanctuary | Pililla, Rizal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --primary:#2d6a4f;
+  --accent:#ffba08;
+  --dark:#081c15;
+  --light:#f1faee;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+html,body{
+  overflow-x:hidden;
+}
+
+body{
+  background:var(--light);
+  color:#222;
+  scroll-behavior:smooth;
+}
+
+/* ================= NAVIGATION ================= */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(8px);
+  transition:0.3s;
+}
+
+nav.scrolled{
+  background:rgba(0,0,0,0.95);
+}
+
+nav .logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:white;
+}
+
+nav .logo img{
+  height:70px;
+}
+
+nav ul{
+  display:flex;
+  gap:25px;
+  list-style:none;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+/* Mobile Menu */
+
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+header{
+  position:relative;
+  height:115vh;
+  background:url('images/bg.png') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:50px;
+}
+
+header::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+  position:relative;
+  z-index:1;
+  color:white;
+  max-width:900px;
+  animation:fadeIn 1.5s ease forwards;
+}
+
+header h1{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+header p{
+  font-size:1.2rem;
+  margin-bottom:30px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.btn{
+  background:var(--accent);
+  padding:14px 32px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  color:black;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:white;
+}
+  
+  /* ================= WHAT'S NEW ================= */
+#whats-new .cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+#whats-new .card {
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+#whats-new .card:hover{
+  transform:translateY(-6px);
+}
+
+#whats-new .card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+#whats-new .card h3{
+  padding:15px;
+  color:var(--primary);
+}
+
+#whats-new .card p{
+  padding:0 15px 15px;
+  color:#444;
+  font-size:0.95rem;
+}
+
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:90px 10%;
+  text-align:center;
+}
+
+section h2{
+  font-size:2.2rem;
+  color:var(--primary);
+  margin-bottom:30px;
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  margin-top:40px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+}
+
+.card h3{
+  padding:20px;
+}
+
+/* ================= GALLERY ================= */
+
+.slideshow-container{
+  max-width:700px;
+  margin:auto;
+  border-radius:16px;
+  overflow:hidden;
+}
+
+.slides{
+  display:none;
+  width:100%;
+}
+
+/* ================= FEATURED SCENES ================= */
+
+#featured-scenes .cards{
+  display:flex;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding-bottom:10px;
+}
+
+#featured-scenes .card{
+  min-width:320px;
+  flex:0 0 auto;
+  scroll-snap-align:center;
+}
+
+#featured-scenes iframe{
+  width:100%;
+  height:200px;
+}
+
+/* ================= PRICING ================= */
+
+.pricing-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.pricing-card{
+  background:white;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.pricing-card:hover{
+  transform:translateY(-6px);
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonial-container{
+  max-width:800px;
+  margin:auto;
+}
+
+.testimonial-slide{
+  display:none;
+  padding:30px;
+  background:white;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ================= CONTACT ================= */
+
+form input, form textarea{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+form button{
+  margin-top:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  background:var(--dark);
+  color:white;
+  padding:25px;
+  text-align:center;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+  nav{
+    padding:15px 20px;
+  }
+
+  nav ul{
+    position:absolute;
+    top:100px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.85);
+    flex-direction:column;
+    align-items:center;
+    display:none; /* hide by default */
+    padding:20px 0;
+  }
+
+  nav ul.active{
+    display:flex !important; /* force show when active */
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  header h1{
+    font-size:2rem;
+  }
+
+  header p{
+    font-size:1rem;
+  }
+
+  section{
+    padding:80px 6%;
+  }
+
+  #featured-scenes iframe{
+    height:180px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="logo">
+    <img src="logo.png" alt="Lyger Logo">
+    <h2>Lyger Animal Sanctuary</h2>
+  </div>
+
+  <div class="menu-toggle" >☰</div>
+
+<ul id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#whats-new">What's New</a></li>
+    <li><a href="#animals">Animals</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- Hero Section -->
+<header>
+  <div class="hero-content">
+    <h1></h1>
+    <p>Experience the wildlife of ligers, tigers, camels, and more in Pililla, Rizal, Philippines. A fun, educational, and safe sanctuary for the whole family.</p>
+    <a href="#visit" class="btn">Plan Your Visit</a>
+  </div>
+</header>
+
+<!-- About Section -->
+<section id="about">
+  <h2>About Us</h2>
+  <p>
+    Lyger Animal Sanctuary, located in the scenic town of Pililla, Rizal, Philippines, is a safe haven for exotic and rescued animals. Our sanctuary is home to majestic ligers, powerful tigers, gentle lions, camels, colorful birds, and fascinating reptiles. We are committed to providing a responsible and educational environment where visitors of all ages can safely interact with and learn about these incredible creatures.
+  </p>
+  <p>
+    Founded with a passion for wildlife conservation and animal welfare, Lyger Animal Sanctuary strives to inspire awareness and appreciation for the natural world. We provide guided tours, interactive experiences, and educational programs that showcase the unique behaviors, habitats, and care of our animals. Our staff is highly trained and dedicated to ensuring both animal well-being and visitor safety, making every visit both memorable and meaningful.
+  </p>
+  <p>
+    Beyond offering fun and educational encounters, our sanctuary actively participates in rescue and rehabilitation programs. Many of our animals have been rescued from unsafe situations and are given a second chance at life here. By visiting Lyger Animal Sanctuary, guests directly support our mission to protect wildlife and promote conservation initiatives locally and globally.
+  </p>
+  <p>
+    Whether you are an animal lover, a family looking for a fun day out, or a student eager to learn more about wildlife, Lyger Animal Sanctuary promises an unforgettable experience. Come and explore the wonders of wildlife, witness the beauty of exotic animals, and join us in our journey to make a positive impact on the world of animal conservation.
+  </p>
+</section>
+<!-- What's New Section -->
+<section id="whats-new" style="background:#fef9f0; padding:90px 5%; text-align:center;">
+  <h2 style="color:#06470c; font-size:2.5rem; margin-bottom:20px;">What's New</h2>
+  <p style="margin-bottom:40px;">Check out the latest happenings, programs, and events at Lyger Animal Sanctuary!</p>
+  
+  <div class="cards">
+    <div class="card">
+      <a href="images/img3.jpg" class="lightbox-link">
+        <img src="images/img3.jpg" alt="Valentine">
+      </a>
+      <h3>Heart Month 2026</h3>
+      <p>Learn about animal care, conservation, and have fun with our resident animals.</p>
+    </div>
+    <div class="card">
+      <a href="images/wkimg.jpg" class="lightbox-link">
+        <img src="images/wkimg.jpg" alt="Weekend Schedules">
+      </a>
+      <h3>Weekend Schedules</h3>
+      <p>Meet our adorable baby liger! Experience guided tours and special photo opportunities with the newest member of our sanctuary.</p>
+    </div>
+    <div class="card">
+      <a href="images/schimg.jpg" class="lightbox-link">
+        <img src="images/schimg.jpg" alt="Back to School">
+      </a>
+      <h3>Back to School</h3>
+      <p>Participate in our workshops focused on wildlife conservation and environmental education for all ages.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Overlay -->
+<div id="lightbox-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:2000;">
+  <img id="lightbox-image" src="" style="max-width:90%; max-height:90%; border-radius:16px;">
+</div>
+
+<script>
+// Lightbox functionality
+document.querySelectorAll('.lightbox-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const imgSrc = link.getAttribute('href');
+    const overlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-image');
+    lightboxImg.src = imgSrc;
+    overlay.style.display = 'flex';
+  });
+});
+
+// Close lightbox when clicking overlay
+document.getElementById('lightbox-overlay').addEventListener('click', () => {
+  document.getElementById('lightbox-overlay').style.display = 'none';
+});
+</script>
+
+
+<!-- Meet Our Animal Residents Section -->
+<section id="animals" style="position:relative; padding:90px 5%; background:#fef9f0; text-align:center;">
+  <h2 style="color:#06470c; font-size:2.5rem; margin-bottom:20px;">Meet Our Animal Residents</h2>
+  <p style="margin-bottom:40px;">Discover our beloved residents up close! From majestic ligers to playful camels, every animal has a story to share.</p>
+
+  <!-- Carousel Wrapper -->
+  <div class="animal-carousel" style="overflow:hidden; position:relative; cursor:grab;">
+    <div class="carousel-track" style="display:flex; gap:20px; will-change: transform;">
+      <div class="card">
+        <img src="images/r5.jpg" alt="Reptile" style="width:100%; height:220px; object-fit:cover;">
+        <h3 style="padding:15px; color:#fff; background:rgba(0,0,0,0.4); position:absolute; bottom:0; width:100%; text-align:left;">Reptiles</h3>
+      </div>
+      <div class="card">
+        <img src="images/r1.jpg" alt="Lygers" style="width:100%; height:220px; object-fit:cover;">
+        <h3 style="padding:15px; color:#fff; background:rgba(0,0,0,0.4); position:absolute; bottom:0; width:100%; text-align:left;">Lygers</h3>
+      </div>
+      <div class="card">
+        <img src="images/r6.jpg" alt="Camels & Exotic Animals" style="width:100%; height:220px; object-fit:cover;">
+        <h3 style="padding:15px; color:#fff; background:rgba(0,0,0,0.4); position:absolute; bottom:0; width:100%; text-align:left;">Camels</h3>
+      </div>
+      <div class="card">
+        <img src="images/r3.jpg" alt="Birds" style="width:100%; height:220px; object-fit:cover;">
+        <h3 style="padding:15px; color:#fff; background:rgba(0,0,0,0.4); position:absolute; bottom:0; width:100%; text-align:left;">Birds</h3>
+      </div>
+      <div class="card">
+        <img src="images/r2.jpg" alt="Other Exotic Animals" style="width:100%; height:220px; object-fit:cover;">
+        <h3 style="padding:15px; color:#fff; background:rgba(0,0,0,0.4); position:absolute; bottom:0; width:100%; text-align:left;">Other Exotic Animals</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.animal-carousel {
+  overflow: hidden;
+  width: 100%;
+  cursor: grab;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  min-width: 300px;
+  flex: 0 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+/* Responsive */
+@media(max-width:900px){ .card{ min-width:250px; } }
+@media(max-width:600px){ .card{ min-width:200px; } }
+</style>
+
+<script>
+const carousel = document.querySelector('.animal-carousel');
+const track = document.querySelector('.carousel-track');
+let cards = Array.from(track.children);
+
+// Clone all cards for seamless looping
+cards.forEach(card => track.appendChild(card.cloneNode(true)));
+cards = Array.from(track.children);
+
+let position = 0;
+let speed = 0.5; // auto-slide speed
+let isDragging = false;
+let startX = 0;
+let lastPos = 0;
+
+// Continuous slide + center-focus scaling
+function animate() {
+  if (!isDragging) {
+    position -= speed;
+    const trackWidth = track.scrollWidth / 2; // original set width
+    if (Math.abs(position) >= trackWidth) position = 0;
+    track.style.transform = `translateX(${position}px)`;
+  }
+
+  // Center-focus effect
+  const carouselCenter = carousel.offsetWidth / 2;
+  cards.forEach(card => {
+    const cardRect = card.getBoundingClientRect();
+    const cardCenter = cardRect.left + cardRect.width / 2 - carousel.getBoundingClientRect().left;
+    const distance = Math.abs(carouselCenter - cardCenter);
+    const maxScale = 1;     // center card
+    const minScale = 0.8;   // side cards
+    const scale = Math.max(minScale, maxScale - (distance / carouselCenter) * 0.2);
+    card.style.transform = `scale(${scale})`;
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// Drag / swipe support
+carousel.addEventListener('mousedown', e => {
+  isDragging = true;
+  startX = e.pageX;
+  lastPos = position;
+  carousel.style.cursor = 'grabbing';
+});
+
+carousel.addEventListener('mouseup', e => { isDragging = false; carousel.style.cursor = 'grab'; });
+carousel.addEventListener('mouseleave', e => { isDragging = false; carousel.style.cursor = 'grab'; });
+carousel.addEventListener('mousemove', e => {
+  if(!isDragging) return;
+  const dx = e.pageX - startX;
+  position = lastPos + dx;
+  track.style.transform = `translateX(${position}px)`;
+});
+
+carousel.addEventListener('touchstart', e => {
+  isDragging = true;
+  startX = e.touches[0].pageX;
+  lastPos = position;
+});
+
+carousel.addEventListener('touchend', e => isDragging = false);
+carousel.addEventListener('touchmove', e => {
+  if(!isDragging) return;
+  const dx = e.touches[0].pageX - startX;
+  position = lastPos + dx;
+  track.style.transform = `translateX(${position}px)`;
+});
+</script>
+
+
+
+
+<!-- Featured Scenes Section -->
+<section id="featured-scenes">
+  <h2>Featured Scenes</h2>
+  <p>Catch the most memorable moments from our sanctuary, TV appearances, and media highlights.</p>
+  <div class="cards">
+    <div class="card"><iframe src="https://www.youtube.com/embed/-4Cw1ghiqe4" title="GMA Playground TV 2022" frameborder="0" allowfullscreen></iframe><h3>GMA Playground TV 2022</h3></div>
+    <div class="card"><iframe src="https://www.youtube.com/embed/uLDuk0x3Vgo" title="Supero Dog Farm" frameborder="0" allowfullscreen></iframe><h3>Supero Dog Farm</h3></div>
+    <div class="card"><iframe src="https://www.youtube.com/embed/NHFRD0xIVPU" title="Mikey Bustos Vlogs" frameborder="0" allowfullscreen></iframe><h3>Mikey Bustos Vlogs</h3></div>
+    <div class="card"><iframe src="https://www.youtube.com/embed/MnjTgvx_OoA" title="GMA Public Affairs" frameborder="0" allowfullscreen></iframe><h3>GMA Public Affairs</h3></div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section id="gallery">
+<h2>#LygerZoo_Wall</h2>
+<div class="slideshow-container" id="gallery-slideshow">
+<img class="slides" src="images/img1.jpg">
+<img class="slides" src="images/img2.jpg">
+<img class="slides" src="images/img3.jpg">
+<img class="slides" src="images/img4.jpg">
+<img class="slides" src="images/img5.jpg">
+<img class="slides" src="images/img6.jpg">
+<img class="slides" src="images/img7.jpg">
+<img class="slides" src="images/img8.jpg">
+<img class="slides" src="images/img9.jpg">
+<img class="slides" src="images/img10.jpg">
+
+</div>
+</section>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let slides = document.getElementsByClassName("slides");
+
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+
+  slides[slideIndex - 1].style.display = "block";
+
+  setTimeout(showSlides, 3000); // change every 3 seconds
+}
+</script>
+
+
+<!-- Visit Section -->
+<section id="visit">
+<h2>Visit Us</h2>
+<p><strong>Address:</strong> Matagbak Rd, Pililla, Rizal, Philippines</p>
+<p><strong>Hours:</strong> Daily 08:30 AM – 5:00 PM</p>
+<p><strong>Contact:</strong> +63 927 007 4586</p>
+<div style="width:100%;max-width:800px;margin:auto;">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3853.879381222981!2d121.3515081153656!3d14.566999589795557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b45b2db7e057%3A0x238a2fcaa7c5683b!2sLyger%20Animal%20Sanctuary!5e0!3m2!1sen!2sph!4v1686892345678" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing">
+<h2>Visitor Pricing</h2>
+<div class="pricing-cards">
+<div class="pricing-card"><h3>Adult</h3><p>₱250 / person</p><p>Includes guided tour and photo opportunities with selected animals.</p></div>
+<div class="pricing-card"><h3>Children</h3><p>₱200 / child</p><p>Fun and educational animal experience for kids under 12.</p></div>
+<div class="pricing-card"><h3>Group</h3><p>₱ / person</p><p>Available for groups 10+ with prior booking.</p></div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" style="padding:50px 5%; background:#fef9f0; text-align:center;">
+  <h2 style="margin-bottom:30px; color:#06470c;">What Our Visitors Say</h2>
+  
+  <div class="testimonial-container" style="position:relative; max-width:800px; margin:0 auto; overflow:hidden;">
+
+    <div class="testimonial-slide" style="display:block; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"Very nice place with a lot of birds, tigers, Ligers, snakes and more! You can even take pictures and feed animals. A great destination for animal lovers."</p>
+      <strong>– Silvi M. (Google Review)</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"They have a wide variation of animals. You can also feed them at a cheap price—not too crowded and easy to access."</p>
+      <strong>– John B. (Google Review)</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"Overall, it’s a fun experience. The staff’s dedication to animal welfare and conservation shines through."</p>
+      <strong>– Jun S. (Google Review)</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"The sanctuary feels like a great family trip—organized route and interesting exhibits. Worth a visit with kids."</p>
+      <strong>– Shani A. (Google Review)</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"Healthy animals and approachable staff. One of the beautiful zoo spots—I can’t wait to go back!</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"We went here with family and had an enjoyable time walking around to see rare animals. Great discovery away from the city."</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"Small zoo but such a cool place—not just for kids but for the young at heart. Entrance fee was reasonable."</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"Great experience feeding the camel and seeing the big felines up close. Worth a couple of hours of your visit."</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"A fun family destination with lots of animals to see. Worth a short trip from Manila."</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+    <div class="testimonial-slide" style="display:none; padding:20px; border-radius:10px; background:#fff; box-shadow:0 4px 8px rgba(0,0,0,0.1); margin-bottom:20px;">
+      <p>"An enjoyable outing with animals that kids love. Friendly staff and interesting exhibits."</p>
+      <strong>– TripAdvisor Reviewer</strong>
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+let tIndex = 0;
+const testimonials = document.querySelectorAll('#testimonials .testimonial-slide');
+
+function showTestimonial() {
+  testimonials.forEach(testimonial => testimonial.style.display = 'none');
+  tIndex++;
+  if (tIndex > testimonials.length) tIndex = 1;
+  testimonials[tIndex - 1].style.display = 'block';
+  setTimeout(showTestimonial, 4000); // change every 4s
+}
+
+showTestimonial();
+</script>
+
+
+<!-- Contact Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<form style="max-width:450px;margin:auto;">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="4" placeholder="Your Message"></textarea>
+<button class="btn">Send Message</button>
+</form>
+</section>
+
+<!-- Connect With Us Section -->
+<section id="connect">
+<h2>Connect With Us</h2>
+<p>Follow us on social media to stay updated with our animals, events, and news!</p>
+<div style="display:flex;justify-content:center;gap:25px;margin-top:20px;">
+<a href="https://www.facebook.com/LygerAnimalSanctuary" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="height:40px;"></a>
+<a href="https://www.instagram.com/lygeranimalsanctuary" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" style="height:40px;"></a>
+<a href="https://www.youtube.com/lygeranimalsanctuary" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" style="height:40px;"></a>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<p>© 2026 Lyger Animal Sanctuary | All Rights Reserved</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+/* ================= MOBILE MENU ================= */
+function toggleMenu() {
+  const navLinks = document.getElementById("nav-links");
+  navLinks.classList.toggle("active");
+}
+/* ================= STICKY NAV ================= */
+window.addEventListener('scroll', ()=>{
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Gallery slideshow
+let slideIndex = 0;
+let startX = 0;
+const slides = document.getElementsByClassName("slides");
+const gallery = document.getElementById("gallery-slideshow");
+
+function showSlidesAuto(){
+  for(let i=0;i<slides.length;i++){slides[i].style.display="none";}
+  slideIndex++;
+  if(slideIndex>slides.length){slideIndex=1;}
+  slides[slideIndex-1].style.display="block";
+  setTimeout(showSlidesAuto,4000);
+}
+showSlidesAuto();
+
+gallery.addEventListener('touchstart', e=>{startX=e.touches[0].clientX;});
+gallery.addEventListener('touchend', e=>{
+  let endX = e.changedTouches[0].clientX;
+  if(endX-startX>50){slideIndex-=2; if(slideIndex<0) slideIndex=slides.length-1;}
+});
+
+// Testimonials slideshow
+let testimonialIndex = 0;
+const testimonials = document.getElementsByClassName("testimonial-slide");
+const testimonialContainer = document.getElementById("testimonial-carousel");
+let tStartX=0;
+
+function showTestimonialsAuto(){
+  for(let i=0;i<testimonials.length;i++){testimonials[i].style.display="none";}
+  testimonialIndex++;
+  if(testimonialIndex>testimonials.length){testimonialIndex=1;}
+  testimonials[testimonialIndex-1].style.display="block";
+  setTimeout(showTestimonialsAuto,5000);
+}
+showTestimonialsAuto();
+
+testimonialContainer.addEventListener('touchstart', e=>{tStartX=e.touches[0].clientX;});
+testimonialContainer.addEventListener('touchend', e=>{
+  let tEndX = e.changedTouches[0].clientX;
+  if(tEndX-tStartX>50){testimonialIndex-=2; if(testimonialIndex<0) testimonialIndex=testimonials.length-1;}
+});
+</script>
+
+<!-- Static App Form Collection Script -->
+<script src="https://static.app/js/static-forms.js" type="text/javascript"></script>
+
+<script src="https://static.app/js/static.js" type="text/javascript"></script>
+  <script>
+/* ================= MOBILE MENU ================= */
+document.addEventListener("DOMContentLoaded", function() {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  menuToggle.addEventListener("click", function() {
+    navLinks.classList.toggle("active");
+  });
+
+  // Optional: close menu when a link is clicked (mobile UX)
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+});
+</script>
+
+</body>
+</html>
